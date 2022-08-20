@@ -1,5 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import { Box, Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
@@ -31,24 +33,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Home() {
   const classes = useStyles();
-
+  const navigate = useNavigate();
   return (
     <div className={classes.container}>
       <Header />
       <main className={classes.main}>
-        <section className={classes.section}>
-          <Box>
-            <Typography variant="body1" p={2}>
-              Projeto Feito com o intuito de Avaliação para a vaga de
-              Desenvolvedor Front-end!
-            </Typography>
-          </Box>
-          <box>
-            <Button variant="outlined" size="large">
+        <Container>
+          <>
+            <Box>
+              <Typography variant="body1" p={2}>
+                Projeto Feito com o intuito de Avaliação para a vaga de
+                Desenvolvedor Front-end!
+              </Typography>
+            </Box>
+
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => navigate("/list")}
+            >
               Lista de Funcionários
             </Button>
-          </box>
-        </section>
+          </>
+        </Container>
       </main>
       <Footer />
     </div>
