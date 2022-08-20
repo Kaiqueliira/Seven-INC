@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     textAlign: "center",
     fontWeight: "bold",
+    position: "relative",
   },
 }));
 

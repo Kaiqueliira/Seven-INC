@@ -6,10 +6,12 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    width: "100%",
   },
   main: {
     background: "#f3f3f3",
-    height: "calc(100vh - 20vh)",
+    width: '100vw',
+    minHeight: "calc(100vh - 20vh)",
     position: "relative",
     display: "flex",
     justifyContent: "center",

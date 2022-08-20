@@ -35,7 +35,7 @@ export default function Home() {
   const classes = useStyles();
   const navigate = useNavigate();
   return (
-    <div className={classes.container}>
+    <>
       <Header />
       <main className={classes.main}>
         <Container>
@@ -58,6 +58,6 @@ export default function Home() {
         </Container>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
