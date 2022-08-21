@@ -2,16 +2,16 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   section: {
+    width: "100%",
     padding: theme.spacing(4),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    width: "100%",
   },
   main: {
+    width: "100%",
     background: "#f3f3f3",
-    width: '100vw',
-    minHeight: "calc(100vh - 20vh)",
+    minHeight: "calc(100% - 100px)",
     position: "relative",
     display: "flex",
     justifyContent: "center",

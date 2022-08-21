@@ -1,7 +1,7 @@
-const Data = [
+export const data = [
   {
     id: "1",
-    name: "kaique lira",
+    name: "kaique lira kaique lirakaique lirakaique lira",
     email: "kaiqueliira@gmail.com",
     phone: "82988967163",
     salary: "4000",
@@ -47,6 +47,52 @@ const Data = [
     salary: "1000",
     created_at: "2022-08-11",
   },
+  {
+    id: "7",
+    name: "Jon lira",
+    email: "Jonlira@gmail.com",
+    phone: "8398888888",
+    salary: "1000",
+    created_at: "2022-08-11",
+  },
+  {
+    id: "8",
+    name: "lira",
+    email: "lira@gmail.com",
+    phone: "8398888888",
+    salary: "1000",
+    created_at: "2022-08-11",
+  },
+  {
+    id: "9",
+    name: "maria lira",
+    email: "marialira@gmail.com",
+    phone: "8398888888",
+    salary: "1000",
+    created_at: "2022-08-11",
+  },
+  {
+    id: "10",
+    name: "maria lira",
+    email: "marialira@gmail.com",
+    phone: "8398888888",
+    salary: "1000",
+    created_at: "2022-08-11",
+  },
+  {
+    id: "11",
+    name: "maria lira",
+    email: "marialira@gmail.com",
+    phone: "8398888888",
+    salary: "1000",
+    created_at: "2022-08-11",
+  },
+  {
+    id: "12",
+    name: "maria lira",
+    email: "marialira@gmail.com",
+    phone: "8398888888",
+    salary: "1000",
+    created_at: "2022-08-11",
+  },
 ];
-
-export default Data;

@@ -6,10 +6,6 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    width: "100vw",
-    height: "100vh",
-  },
   main: {
     background: "#f3f3f3",
     height: "calc(100vh - 20vh)",
