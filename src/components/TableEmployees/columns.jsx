@@ -24,14 +24,14 @@ export const columns = [
     field: "salary",
     headerName: "Salário",
     type: "number",
-    valueGetter: (values) => `${currencyFormatter(values.row.salary)}`,
+    valueGetter: (params) => `${currencyFormatter(params.row.salary)}`,
     minWidth: 150,
   },
   {
     field: "created_at",
     headerName: "Admissão",
     type: "string",
-    valueGetter: (values) => `${dateFormat(values.row.created_at)}`,
+    valueGetter: (params) => `${dateFormat(params.row.created_at)}`,
     minWidth: 120,
   },
   {

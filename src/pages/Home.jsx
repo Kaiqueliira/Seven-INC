@@ -46,7 +46,7 @@ export default function Home() {
             <Button
               variant="contained"
               size="large"
-              onClick={() => navigate("/list")}
+              onClick={() => navigate("/employee")}
             >
               Lista de Funcionários
             </Button>

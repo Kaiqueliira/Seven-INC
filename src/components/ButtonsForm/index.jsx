@@ -1,22 +1,31 @@
-import { makeStyles } from "@material-ui/styles";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import PreviewIcon from "@mui/icons-material/Preview";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import { Button } from "@mui/material";
-
-const useStyles = makeStyles({});
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useEmployee } from "../../hooks/useEmployee";
+import { usePage } from "../../hooks/usePage";
 
 export default function ButtonsForm({ params }) {
-  console.log(params);
-  const classes = useStyles();
+  const employee = useEmployee();
+  const page = usePage();
+  const navigate = useNavigate();
+
+  const notify = () => toast.success(`${params.row.name} foi excluido.`);
   return (
     <div>
       <Button
         sx={{ marginRight: ".4rem" }}
         variant="contained"
-        startIcon={<PreviewIcon />}
+        startIcon={<VisibilityIcon />}
         color="success"
         size="small"
+        onClick={() => {
+          employee.setEmployees(params.row);
+          page.setPage("view");
+          navigate(`/employee/view/${params.row.id}`);
+        }}
       >
         Visualizar
       </Button>
@@ -25,6 +34,11 @@ export default function ButtonsForm({ params }) {
         variant="contained"
         startIcon={<EditIcon />}
         size="small"
+        onClick={() => {
+          employee.setEmployees(params.row);
+          page.setPage("edit");
+          navigate(`/employee/edit/${params.row.id}`);
+        }}
       >
         Editar
       </Button>
@@ -33,6 +47,7 @@ export default function ButtonsForm({ params }) {
         color="error"
         size="small"
         startIcon={<DeleteIcon />}
+        onClick={() => notify()}
       >
         Excluir
       </Button>
