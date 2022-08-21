@@ -1,7 +1,7 @@
 export const data = [
   {
     id: "1",
-    name: "kaique lira kaique lirakaique lirakaique lira",
+    name: "kaique s lira",
     email: "kaiqueliira@gmail.com",
     phone: "82988967163",
     salary: "4000",
