@@ -3,25 +3,41 @@ import { Box } from "@mui/system";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import ptBr from "date-fns/locale/pt-BR";
+import { useFormik } from "formik";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useEmployee } from "../../hooks/useEmployee";
 import { usePage } from "../../hooks/usePage";
+import { dateFormat } from "../../utils/formatters";
 
 export default function FormActions() {
   const { page } = usePage();
   const { employee } = useEmployee();
-
-  const [value, setValue] = useState(employee.created_at);
-
+  const [date, setDate] = useState(employee.created_at || new Date());
   const navigate = useNavigate();
 
   const handleChange = (newValue) => {
-    setValue(newValue);
+    setDate(newValue);
   };
 
+  const formik = useFormik({
+    initialValues: {
+      name: employee.name || "",
+      email: employee.email || "",
+      phone: employee.phone || "",
+      salary: employee.salary || "",
+      created_at: date || new Date(),
+    },
+    onSubmit: (values) => {
+      toast(JSON.stringify({ ...values, created_at: dateFormat(date) }));
+      navigate("/employee");
+    },
+  });
+
   return (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <Box
         sx={{
           display: "flex",
@@ -38,10 +54,11 @@ export default function FormActions() {
           <TextField
             sx={{ width: "100%" }}
             required
-            id="outlined-required"
+            id="name"
             label="Nome"
             disabled={page === "view" && true}
-            defaultValue={page === "add" ? "" : employee.name}
+            defaultValue={formik.values.name}
+            onChange={formik.handleChange}
           />
         </Box>
         <Box
@@ -69,10 +86,12 @@ export default function FormActions() {
               }),
             ]}
             required
-            id="outlined-required"
+            type="email"
+            id="email"
             label="Email"
             disabled={page === "view" && true}
-            defaultValue={page === "add" ? "" : employee.email}
+            defaultValue={formik.values.email}
+            onChange={formik.handleChange}
           />
           <TextField
             sx={[
@@ -84,10 +103,11 @@ export default function FormActions() {
                 },
               }),
             ]}
-            id="outlined-required"
+            id="phone"
             label="Telefone"
             disabled={page === "view" && true}
-            defaultValue={page === "add" ? "" : employee.phone}
+            defaultValue={formik.values.phone}
+            onChange={formik.handleChange}
           />
         </Box>
         <Box
@@ -115,16 +135,21 @@ export default function FormActions() {
                 },
               }),
             ]}
-            id="outlined-required"
+            id="salary"
+            type="number"
             label="Salario"
             disabled={page === "view" && true}
-            defaultValue={page === "add" ? "" : employee.salary}
+            defaultValue={formik.values.salary}
+            onChange={formik.handleChange}
           />
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <LocalizationProvider
+            dateAdapter={AdapterDateFns}
+            adapterLocale={ptBr}
+          >
             <DesktopDatePicker
               label="Admissão"
               inputFormat="dd/MM/yyyy"
-              value={value || new Date()}
+              value={date}
               onChange={handleChange}
               disabled={page === "view" && true}
               renderInput={(params) => <TextField {...params} />}
@@ -146,14 +171,21 @@ export default function FormActions() {
         >
           <Button
             variant="contained"
-            sx={[{ flex: 1, mr: 2 }]}
+            sx={[{ flex: 1 }]}
             onClick={() => navigate("/employee")}
           >
             Voltar
           </Button>
-          <Button variant="contained" color="success" sx={{ flex: 1 }}>
-            Salvar
-          </Button>
+          {page === "view" || (
+            <Button
+              variant="contained"
+              color="success"
+              sx={{ flex: 1, ml: 2 }}
+              type="submit"
+            >
+              Salvar
+            </Button>
+          )}
         </Box>
       </Box>
     </form>

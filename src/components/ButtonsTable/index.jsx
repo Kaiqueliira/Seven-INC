@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useEmployee } from "../../hooks/useEmployee";
 import { usePage } from "../../hooks/usePage";
 
-export default function ButtonsForm({ params }) {
+export default function ButtonsTable({ params }) {
   const employee = useEmployee();
   const page = usePage();
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { currencyFormatter, dateFormat } from "../../utils/formatters";
-import ButtonsForm from "../ButtonsForm";
+import ButtonsTable from "../ButtonsTable";
 
 export const columns = [
   { field: "id", headerName: "ID", minWidth: 70 },
@@ -39,7 +39,7 @@ export const columns = [
     renderCell: (params) => {
       return (
         <div>
-          <ButtonsForm params={params} />
+          <ButtonsTable params={params} />
         </div>
       );
     },

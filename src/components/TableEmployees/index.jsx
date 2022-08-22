@@ -4,11 +4,14 @@ import { DataGrid } from "@mui/x-data-grid";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 import { data } from "../../Data";
+import { useEmployee } from "../../hooks/useEmployee";
+
 import { usePage } from "../../hooks/usePage";
 import { columns } from "./columns";
 
 export default function TableEmployees() {
   const { setPage } = usePage();
+  const employee = useEmployee();
   const navigate = useNavigate();
 
   return (
@@ -33,6 +36,7 @@ export default function TableEmployees() {
         <Button
           variant="contained"
           onClick={() => {
+            employee.setEmployees({});
             setPage("add");
             navigate("/employee/add");
           }}
